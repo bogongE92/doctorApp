@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="icon" href="./images/favicon.ico" type="image/png"/>
+
+<title>login 페이지</title>
+
+<!--resource-->
+<link rel="stylesheet" type="text/css" href="./css/common.css">
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+</head>
+<body> 
+    <!--컨텐츠-->
+    <div class="con_wrap">
+
+        <!--로고-->
+        <div class="logo">
+            <a href="/">
+                <img src="./images/logo_main_new.svg">
+            </a>
+        </div>
+        <!--//로고-->
+
+        <!--타이틀-->
+        <div class="title">
+            <h2>로그인</h2>
+            <p>헬미닥에 간단한 의료 상담을 해보세요.</p>
+        </div>
+        <!--//타이틀--> 
+
+        <!--입력폼-->
+        <form method="post" action="/login/">
+            <label for="id">이메일</label>
+            <input type="email" name="id" id="id" class="base w100 bm7" value="" required placeholder="이메일">
+            
+            <div class="pwdbox">
+                <label for="pwd">비밀번호</label>
+                <input type="password" name="password" id="pwd" class="base w100 bm7" value="" autoComplete="off"  required placeholder="비밀번호">
+                <img src="./images/eye_off.svg" alt="Toggle Password" class="password-toggle" id="togglePwd">
+            </div>
+
+            <script>
+                //비밀번호 보이고 숨기기
+                const pwdInput = document.getElementById('pwd');
+                const togglePwd = document.getElementById('togglePwd');
+                togglePwd.addEventListener('click', function () {
+
+                    if (pwdInput.type === 'password') {
+                        pwdInput.type = 'text';
+                        togglePwd.src = "./images/eye_on.svg";
+                    }
+                    else {
+                        pwdInput.type = 'password';
+                        togglePwd.src = "./images/eye_off.svg";
+                    }
+                });
+            </script>
+
+            <!--버튼-->
+            <div class="btn_wrap">
+                <input type="submit" title="로그인" value="로그인" class="btn active">
+            </div>
+            <!--//버튼-->
+        </form>
+        <!--//입력폼-->
+
+        <!--아이디/비번-->
+        <div class="idpw_find_txt">
+            <a href="/signUp">아이디 만들기</a>
+            <span class="gr_line"></span>
+            <a href="/signUp/password_reset">비밀번호 찾기</a>
+        </div>
+        <!--//아이디/비번-->
+
+        <!--SNS-->
+        <!--SNS타이틀-->
+        <div class="sns_title">
+            <span class="line"></span>
+            <p>SNS 계정으로 로그인</p>
+        </div>
+        <!--//SNS타이틀-->
+
+        <!--SNS아이콘-->
+        <div class="sns_wrap">
+            <a id="openModalBtn" href="/auth/google" class="icon_sns"><img src="./images/sns_google.svg"><p>구글</p></a>
+            <a href="/auth/apple" class="icon_sns"><img src="./images/sns_apple.svg"><p>애플</p></a>
+        </div>
+        <!--//SNS아이콘-->
+        <!--//SNS-->
+    </div>
+</body>
+</html>
