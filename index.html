@@ -19,80 +19,133 @@
     <div class="app-container">
         <!-- 좌측 사이드바 -->
         <aside class="sidebar">
-            <!-- 날짜 선택 -->
-            <div class="form-group">
-                <label for="dateInput">날짜</label>
-                <div class="date-picker-wrapper">
-                    <input type="text" id="dateInput" readonly />
-                    <span class="icon">📅</span>
+            <div class="sidebar-inner">
+                <!-- 날짜 선택 -->
+                <div class="form-group">
+                    <label for="dateInput">날짜</label>
+                    <div class="date-picker-wrapper">
+                        <input type="text" id="dateInput" readonly />
+                        <span class="calendar-icon"></span>
+                    </div>
+                    <div id="calendar" class="calendar"></div>
                 </div>
-                <div id="calendar" class="calendar"></div>
-            </div>
-            <!-- 의사 선택 -->
-            <div class="form-group">
-                <label>의사</label>
-                <div id="doctorSelect" class="select-wrapper">
-                <div class="selected">의사 선택</div>
-                    <ul class="options">
-                        <li>
-                        <span class="avatar">의</span>
-                        <div class="info">
-                            <div class="name">성함</div>
-                            <div class="desc">OO병원 OOO선생님</div>
+                <!-- 의사 선택 -->
+                <div class="form-group">
+                    <label>의사</label>
+                    <div id="doctorSelect" class="select-wrapper">
+                        <div class="selected">
+                            <span class="selected-txt">의사 선택</span>
+                            <span class="select-icon"></span>
                         </div>
+                        <ul class="options">
+                            <li>
+                            <span class="avatar">의</span>
+                            <div class="info">
+                                <div class="name">성함</div>
+                                <div class="desc">OO병원 OOO선생님</div>
+                            </div>
+                            </li>
+                            <li>
+                            <span class="avatar">의</span>
+                            <div class="info">
+                                <div class="name">성함</div>
+                                <div class="desc">OO병원 OOO선생님</div>
+                            </div>
+                            </li>
+                            <li>
+                            <span class="avatar">의</span>
+                            <div class="info">
+                                <div class="name">성함</div>
+                                <div class="desc">OO병원 OOO선생님</div>
+                            </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 환자 목록 -->
+                <div class="card patient-card">
+                    <div class="card-header">
+                        <h3>환자 목록</h3>
+                    </div>
+                    <ul class="card-body patient-list">
+                        <!-- inactive 예시 -->
+                        <li class="list-item">
+                            <div class="patient-info">
+                                <span class="patient-icon"></span>
+                                <span class="patient-name">환자1</span>
+                            </div>
+                            <div class="date-info">
+                                <span class="dateday">25/06/23</span>
+                                <span class="datetime">오후 7:00</span>
+                            </div>
                         </li>
-                        <li>
-                        <span class="avatar">의</span>
-                        <div class="info">
-                            <div class="name">성함</div>
-                            <div class="desc">OO병원 OOO선생님</div>
-                        </div>
+                        <!-- … -->
+                        <!-- active 예시 -->
+                        <li class="list-item active">
+                            <div class="patient-info">
+                                <span class="patient-icon"></span>
+                                <span class="patient-name">환자2</span>
+                            </div>
+                            <div class="date-info">
+                                <span class="dateday">25/06/23</span>
+                                <span class="datetime">오후 7:00</span>
+                            </div>
                         </li>
-                        <li>
-                        <span class="avatar">의</span>
-                        <div class="info">
-                            <div class="name">성함</div>
-                            <div class="desc">OO병원 OOO선생님</div>
-                        </div>
+                        <!-- … -->
+                        <li class="list-item">
+                            <div class="patient-info">
+                                <span class="patient-icon"></span>
+                                <span class="patient-name">환자3</span>
+                            </div>
+                            <div class="date-info">
+                                <span class="dateday">25/06/23</span>
+                                <span class="datetime">오후 7:00</span>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="patient-info">
+                                <span class="patient-icon"></span>
+                                <span class="patient-name">환자3</span>
+                            </div>
+                            <div class="date-info">
+                                <span class="dateday">25/06/23</span>
+                                <span class="datetime">오후 7:00</span>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="patient-info">
+                                <span class="patient-icon"></span>
+                                <span class="patient-name">환자3</span>
+                            </div>
+                            <div class="date-info">
+                                <span class="dateday">25/06/23</span>
+                                <span class="datetime">오후 7:00</span>
+                            </div>
                         </li>
                     </ul>
                 </div>
-            </div>
-            <!-- 환자 목록 -->
-            <div class="patient-list">
-                <ul>
-                    <li class="patient-item active">
-                        <span class="name">환자1</span>
-                        <span class="datetime">25/06/23 오후 7:00</span>
-                    </li>
-                    <li class="patient-item">
-                        <span class="name">환자2</span>
-                        <span class="datetime">25/06/23 오후 7:00</span>
-                    </li>
-                    <li class="patient-item">
-                        <span class="name">환자3</span>
-                        <span class="datetime">25/06/23 오후 7:00</span>
-                    </li>
-                    <li class="patient-item">
-                        <span class="name">환자4</span>
-                        <span class="datetime">25/06/23 오후 7:00</span>
-                    </li>
-                </ul>
             </div>
         </aside>
     
         <!-- 우측 메인 컨텐츠 -->
         <main class="content">
             <header class="record-header">
-                <h1>환자1 초진 기록지 <span class="sub">(34세/여성)</span></h1>
-                <button class="btn-copy">요약 복사</button>
+                <h1>
+                    <span class="title-icon"></span>
+                    <span class="txt">환자1 초진 기록지</span> 
+                    <span class="sub">(34세/여성)</span>
+                </h1>
+                <button class="btn-copy">
+                    <span class="btn-icon"></span>
+                    <span class="btn-txt">요약 복사</span>
+                </button>
             </header>
     
             <section class="record-section">
                 <!-- 주증상 -->
                 <div class="field-box">
                     <h2>주증상 <small>(Chief complaint)</small></h2>
-                    <p>수면장애</p>
+                    <p class="point">수면장애</p>
                 </div>
                 <!-- 현병력 -->
                 <div class="field-box">
