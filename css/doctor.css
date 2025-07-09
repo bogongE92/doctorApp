@@ -1,4 +1,5 @@
-* { box-sizing: border-box; margin:0; padding:0; }
+@charset "UTF-8";
+
 body {
   font-family: "Noto Sans KR", sans-serif;
   background: #F8FAFC;
@@ -11,17 +12,18 @@ body {
 
 /* --- 사이드바 --- */
 .sidebar {
-  width: 440px;
-  overflow-y: auto;
+  width: 490px;
 }
 .sidebar-inner{
+  width: 100%;
   display: flex;
   flex-direction: column;
   height: 100%; 
   padding: 81px 25px 41px 25px;
+  /* box-sizing: content-box; */
 }
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 25px;
 }
 .form-group label {
   display: block;
@@ -35,15 +37,21 @@ body {
 /* 날짜 입력 */
 .date-picker-wrapper {
   position: relative;
-  display: flex;
+  width: 100%;
+  height: 52px;
+}
+.date-picker-wrapper .date-picker-box{
+  position: absolute;
+  display: inline-flex;
   align-items: center;
-  /* border: 1px solid #ccc; */
-  border-radius: 18px;
+  width: 100%;
   height: 52px;
   padding: 0px 22px;
+  border-radius: 18px;
   cursor: pointer;
   background: #fff;
   box-shadow: 0px 0px 5px #0000002B;
+  z-index: 21;
 }
 .date-picker-wrapper input {
   border: none;
@@ -59,118 +67,173 @@ body {
   width: 29px;
   height: 25px;
   background: url(../images/icon_calendar.svg) no-repeat center / contain;
-
+}
+.date-picker-wrapper .calendar-icon.active {
+  background: url(../images/icon_calendar_active.svg) no-repeat center / contain;
 }
 /* 달력 */
 .calendar {
   position: absolute;
-  top: 160px;
-  left: 100px;
-  margin-top: 6px;
-  background: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 10px;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  padding: 45px 35px;
+  padding-top: 75px;
   display: none;
-  z-index: 10;
-  width: 240px;
+  z-index: 20;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 .calendar.show { display: block; }
 .calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  padding-bottom: 24px;
+  height: 45px;
   font-weight: 500;
+  font-size: 24px;
+  border-bottom: 1px solid #f4f4f4;
+  box-sizing: content-box;
 }
 .calendar-header .prev,
 .calendar-header .next {
+  display: inline-block;
   cursor: pointer;
-  padding: 2px 6px;
+  width: 9px;
+  height: 15px;
+  padding: 0 10px;
+  box-sizing: content-box;
+  background: no-repeat center;
+}
+.calendar-header .prev{
+  background-image: url(../images/icon_prev.svg);
+}
+.calendar-header .next {
+  background-image: url(../images/icon_next.svg);
+}
+.calendar-header .month-year{
+  font-size: 30px;
+  color: #686868;
 }
 .days-names, .date-grid {
   display: grid;
   grid-template-columns: repeat(7,1fr);
   text-align: center;
+  gap: 15px;
+}
+.days-names{
+  padding: 20px 0;
 }
 .days-names div {
-  font-size: 12px;
-  color: #666;
+  font-size: 19px;
+  color: #848484;
 }
 .date-cell {
-  padding: 6px 0;
+  padding: 10px 0;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 50%;
+  font-size: 21px;
+  color: #494949;
+  font-weight: 500;
 }
 .date-cell:hover { background: #ececff; }
-.date-cell.selected { background: #6e5de7; color: #fff; }
+.date-cell.selected {
+  background: #a687fd; 
+  color: #6B37FB; 
+  border-radius: 50%;
+}
 /* 빈칸 표시용 */
 .date-cell.empty { cursor: default; background: transparent; }
 
 /* 의사 선택 */
 .select-wrapper {
   position: relative;
-  /* border: 1px solid #ccc; */
-  border-radius: 18px;
-
+  width: 100%;
+  height: 52px;
   cursor: pointer;
   background: #fff;
-  box-shadow: 0px 0px 5px #0000002B;
+  /* border-radius: 18px; */
+  /* box-shadow: 0px 0px 5px #0000002B; */
 }
 .select-wrapper .selected {
-  position: relative;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   padding: 0px 22px;
   height: 52px;
   font-size: 25px;
   font-weight: 700;
+  box-shadow: 0px 0px 5px #0000002B; 
+  border-radius: 18px;
+  z-index: 11;
+  cursor: pointer;
 }
 .select-wrapper .selected .select-icon{
   display: inline-block;
   width: 12px;
   height: 7px;
   background: url(../images/icon_dropdown.svg) no-repeat center / contain;
+  transition: all 0.3s;
 }
-.select-wrapper .selected:after{
-  
+.select-wrapper .selected .select-icon.active{
+  transform: rotate(180deg);
 }
-.select-wrapper .options {
-  list-style: none;
+
+.select-wrapper .options-box{
+  display: none;
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
   right: 0;
-  background: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  display: none;
-  max-height: 200px;
-  overflow-y: auto;
+  padding-top: 54px;
   z-index: 10;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0px 0px 5px #0000002B; 
 }
-.select-wrapper .options.show { display: block; }
+.select-wrapper .options-box.show { display: block; }
+.select-wrapper .options {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 15px 25px;
+}
 .options li {
   display: flex;
   align-items: center;
-  padding: 8px 10px;
+  height: 67px;
+  padding: 5px 10px;
+  border-radius: 18px;
+  transition: background .2s;
   cursor: pointer;
+  gap: 20px;
 }
 .options li:hover { background: #f0f0f0; }
 .options .avatar {
-  width: 32px; height: 32px;
+  width: 49px; 
+  height: 49px;
   background: #ddd;
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  margin-right: 8px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+.options .info{
+  display: flex;
+  flex-direction: column;
 }
 .options .info .name {
   font-weight: 500;
+  font-size: 23px;
+  color: #474747;
+  line-height: 1;
 }
 .options .info .desc {
-  font-size: 12px;
-  color: #666;
+  font-size: 16px;
+  color: #757575;
 }
 
 /* 환자 목록 */
@@ -183,15 +246,17 @@ body {
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   overflow: hidden;
+  margin-top: 10px;
 }
 .patient-card .card-header {
   padding: 16px;
   border-bottom: 1px solid #eee;
   background: #8EA3BC;
+  height: 59px;
 }
 .patient-card .card-header h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 500;
   color: #fff;
 }
@@ -208,6 +273,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 67px;
   padding: 12px 16px;
   border-radius: 18px;
   cursor: pointer;
@@ -227,9 +293,6 @@ body {
 .patient-card .list-item:last-child::after{
   display: none;
 }
-.patient-card .list-item + .list-item {
-
-}
 .patient-card .list-item:hover {
   background: #F4F6F9;
 }
@@ -245,7 +308,7 @@ body {
   font-size: 25px;
 }
 /* 아이콘 */
-.patient-card .patient-icon {
+.patient-card .patient-info .patient-icon {
   width: 31px;
   height: 32px;
   background: url(../images/icon_patient.svg) no-repeat center / contain;
@@ -253,15 +316,12 @@ body {
 
 /* 텍스트 정보 */
 .patient-card .date-info {
-  /* display: flex;
-  justify-content: space-between; */
-  /* width: 100%; */
+  display: flex;
+  color: #C9C9C9;
+  font-size: 18px;
+  gap: 10px;
 }
 
-.patient-card .patient-info .datetime {
-  font-size: 12px;
-  color: #888;
-}
 
 /* active 상태 */
 .patient-card .list-item.active {
@@ -274,8 +334,8 @@ body {
 .patient-card .list-item.active .patient-icon{
   background: url(../images/icon_patient_w.svg) no-repeat center / contain;
 }
-.patient-card .list-item.active .datetime {
-  color: #e0dbff;
+.patient-card .list-item.active .date-info {
+  color: #fff;
 }
 
 
@@ -380,7 +440,7 @@ body {
   font-weight: 600;
 }
 .field-box:nth-child(2) p{
-  font-weight: 400;
+  font-weight: 500;
 }
 .field-box p.point{
   font-size: 31px;

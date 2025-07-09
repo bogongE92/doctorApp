@@ -24,10 +24,12 @@
                 <div class="form-group">
                     <label for="dateInput">날짜</label>
                     <div class="date-picker-wrapper">
-                        <input type="text" id="dateInput" readonly />
-                        <span class="calendar-icon"></span>
+                        <div class="date-picker-box">
+                            <input type="text" id="dateInput" readonly />
+                            <span class="calendar-icon"></span>
+                        </div>
+                        <div id="calendar" class="calendar"></div>
                     </div>
-                    <div id="calendar" class="calendar"></div>
                 </div>
                 <!-- 의사 선택 -->
                 <div class="form-group">
@@ -37,29 +39,31 @@
                             <span class="selected-txt">의사 선택</span>
                             <span class="select-icon"></span>
                         </div>
-                        <ul class="options">
-                            <li>
-                            <span class="avatar">의</span>
-                            <div class="info">
-                                <div class="name">성함</div>
-                                <div class="desc">OO병원 OOO선생님</div>
-                            </div>
-                            </li>
-                            <li>
-                            <span class="avatar">의</span>
-                            <div class="info">
-                                <div class="name">성함</div>
-                                <div class="desc">OO병원 OOO선생님</div>
-                            </div>
-                            </li>
-                            <li>
-                            <span class="avatar">의</span>
-                            <div class="info">
-                                <div class="name">성함</div>
-                                <div class="desc">OO병원 OOO선생님</div>
-                            </div>
-                            </li>
-                        </ul>
+                        <div class="options-box">
+                            <ul class="options">
+                                <li>
+                                    <span class="avatar">사진</span>
+                                    <div class="info">
+                                        <div class="name">성함</div>
+                                        <div class="desc">OO병원 OOO선생님</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="avatar">사진</span>
+                                    <div class="info">
+                                        <div class="name">성함</div>
+                                        <div class="desc">OO병원 OOO선생님</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="avatar">사진</span>
+                                    <div class="info">
+                                        <div class="name">성함</div>
+                                        <div class="desc">OO병원 OOO선생님</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <!-- 환자 목록 -->
@@ -105,7 +109,17 @@
                         <li class="list-item">
                             <div class="patient-info">
                                 <span class="patient-icon"></span>
-                                <span class="patient-name">환자3</span>
+                                <span class="patient-name">환자1</span>
+                            </div>
+                            <div class="date-info">
+                                <span class="dateday">25/06/23</span>
+                                <span class="datetime">오후 7:00</span>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="patient-info">
+                                <span class="patient-icon"></span>
+                                <span class="patient-name">환자2</span>
                             </div>
                             <div class="date-info">
                                 <span class="dateday">25/06/23</span>
